@@ -3,9 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>test</title>
 </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        background-color: #355B96;
+        color: #bfd9fa;
+        font-family: "SpaceMono", monospace;
+        white-space: pre;
+        display: flex;
+        overflow: hidden;
+    }
+
+    .background-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover; 
+        z-index: -1; 
+    }
+
+    h1 {
+        position: absolute; 
+        transition: transform 0.1s ease-in-out;
+    }
+
+    h1:hover {
+        color: #4795fb;
+    }
+</style>
 <body>
-    
+    <img class="background-image" src="https://frieren-anime.jp/wp-content/themes/frieren_2023/assets/img/common/footer/footer_visual.png" alt="Background Image">
+    <h1 id = "asciiArt">
+         _____          _      _____ _ _   _   _ _   _ _____
+        |  ___|        | |    |  __ (.) | | | | | | | | ___ \ 
+        | |_ _   _  ___| | __ | |  \/_| |_| |_| | | | | |_/ / 
+        |  _| | | |/ __| |/ / | | __| | __|  _  | | | | ___ \ 
+        | | | |_| | |__|   |  | |_\ \ | |_| | | | |_| | |_/ / 
+        \_|  \__,_|\___|_|\_\ \_____/_|\__\_| |_/\___/\____/  
+    </h1>
 </body>
+    <script>
+        document.addEventListener("mousemove", (event) => {
+            const art = document.getElementById("asciiArt");
+            const x = event.clientX - window.innerWidth / 2;  
+            const y = event.clientY - window.innerHeight / 2; 
+            
+            const angleX = (y / window.innerHeight) * 60;  
+            const angleY = (x / window.innerWidth) * -60;  
+
+            art.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+        });
+    </script>
 </html>
